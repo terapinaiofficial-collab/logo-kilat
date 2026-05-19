@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Logo Kilat — Terapin AI</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css"/>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:#F0FAFA;color:#1a1a1a;min-height:100vh}
+:root{--teal:#0B8A8A;--teal-light:#13AFAF;--teal-bg:#E6F7F7;--teal-border:#A8DCDC;--green:#5BB89A;--grad:linear-gradient(135deg,#0B8A8A 0%,#5BB89A 60%,#8DD4B0 100%);--radius:10px;--radius-sm:6px}
+.page{max-width:720px;margin:0 auto;padding:1.5rem 1rem 3rem}
+.header{background:var(--grad);padding:1.2rem 1.5rem;border-radius:14px;margin-bottom:1.5rem;display:flex;align-items:center;justify-content:space-between;box-shadow:0 4px 20px rgba(11,138,138,0.2)}
+.header-left{display:flex;align-items:center;gap:14px}
+.logo-box{background:rgba(255,255,255,0.18);border-radius:10px;padding:5px 12px;display:flex;align-items:center}
+.logo-text{font-size:20px;font-weight:700;color:#fff;letter-spacing:-0.5px}
+.logo-ai{background:rgba(255,255,255,0.28);border-radius:6px;padding:1px 7px;font-size:20px;font-weight:700;color:#fff;margin-left:2px}
+.divider-v{width:1px;height:30px;background:rgba(255,255,255,0.3);margin:0 8px}
+.product-name{font-size:15px;font-weight:600;color:#fff}
+.product-sub{font-size:11px;color:rgba(255,255,255,0.78);margin-top:2px}
+.header-badge{background:rgba(255,255,255,0.18);border:1px solid rgba(255,255,255,0.35);border-radius:20px;padding:5px 14px;font-size:12px;color:#fff;font-weight:500}
+.card{background:#fff;border:1px solid var(--teal-border);border-radius:var(--radius);padding:1.25rem;margin-bottom:1rem;border-left:3px solid var(--teal)}
+.section-label{font-size:11px;font-weight:600;color:var(--teal);letter-spacing:0.07em;text-transform:uppercase;margin-bottom:1rem;display:flex;align-items:center;gap:6px}
+.field{margin-bottom:1rem}
+.field:last-child{margin-bottom:0}
+.field label{display:block;font-size:13px;font-weight:500;color:#333;margin-bottom:6px}
+.hint{font-size:11px;color:#999;margin-top:4px}
+input[type=text],textarea{width:100%;font-size:13px;border:1px solid var(--teal-border);border-radius:var(--radius-sm);padding:8px 11px;background:#fff;color:#333;outline:none;transition:border-color 0.15s}
+input[type=text]:focus,textarea:focus{border-color:var(--teal);box-shadow:0 0 0 3px rgba(11,138,138,0.08)}
+textarea{resize:vertical;min-height:70px}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+@media(max-width:500px){.row2{grid-template-columns:1fr}}
+.char-count{font-size:11px;color:#aaa;text-align:right;margin-top:3px}
+.req{color:#d94f4f}
+.kat-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:6px}
+.kat-btn{padding:8px 10px;border-radius:var(--radius-sm);border:1px solid var(--teal-border);font-size:12px;color:#555;cursor:pointer;background:#fff;text-align:left;display:flex;align-items:center;gap:7px;transition:all 0.13s;font-weight:500;user-select:none}
+.kat-btn:hover{border-color:var(--teal);color:var(--teal);background:var(--teal-bg)}
+.kat-btn.sel{background:var(--teal-bg);border-color:var(--teal);color:var(--teal)}
+.kat-btn i{font-size:15px;color:var(--teal)}
+.chip-group{display:flex;flex-wrap:wrap;gap:6px;margin-top:4px}
+.chip{padding:5px 12px;border-radius:20px;border:1px solid var(--teal-border);font-size:12px;color:#555;cursor:pointer;background:#fff;transition:all 0.12s;user-select:none}
+.chip:hover{border-color:var(--teal);color:var(--teal)}
+.chip.sel{background:var(--teal-bg);border-color:var(--teal);color:var(--teal);font-weight:500}
+.subkat-wrap{margin-top:10px;padding:12px 14px;background:var(--teal-bg);border-radius:var(--radius-sm);border:1px solid var(--teal-border);display:none}
+.subkat-wrap.vis{display:block}
+.subkat-title{font-size:11px;color:var(--teal);margin-bottom:8px;font-weight:600;display:flex;align-items:center;gap:5px}
+.divline{height:1px;background:var(--teal-border);margin:10px 0}
+.lain-inp{margin-top:8px;font-size:12px;border:1px solid var(--teal-border);border-radius:var(--radius-sm);padding:7px 10px;width:100%;background:#fff;color:#333;outline:none}
+.lain-inp:focus{border-color:var(--teal)}
+.color-row{display:flex;gap:8px;flex-wrap:wrap;margin-top:4px}
+.swatch{width:28px;height:28px;border-radius:50%;cursor:pointer;border:2px solid transparent;transition:all 0.12s}
+.swatch.sel{border-color:var(--teal);box-shadow:0 0 0 2px rgba(11,138,138,0.2)}
+.ci{display:flex;flex-direction:column;align-items:center;gap:2px}
+.clbl{font-size:10px;color:#999;text-align:center}
+.preview-card{background:#fff;border:1px solid var(--teal-border);border-radius:var(--radius);padding:1.25rem;margin-bottom:1rem}
+.preview-label{font-size:11px;color:var(--teal);margin-bottom:8px;display:flex;align-items:center;gap:6px;font-weight:600}
+.preview-box{background:var(--teal-bg);border:1px solid var(--teal-border);border-radius:var(--radius-sm);padding:1rem;font-size:12px;color:#444;line-height:1.9;min-height:80px;word-break:break-word;white-space:pre-line}
+.btn-primary{width:100%;padding:13px;border-radius:var(--radius);background:var(--grad);color:#fff;border:none;font-size:15px;font-weight:600;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px;box-shadow:0 4px 16px rgba(11,138,138,0.3);transition:opacity 0.15s}
+.btn-primary:hover{opacity:0.92}
+.btn-reset{width:100%;padding:10px;border-radius:var(--radius);background:transparent;color:var(--teal);border:1px solid var(--teal-border);font-size:13px;cursor:pointer;margin-top:8px}
+.btn-reset:hover{background:var(--teal-bg)}
+.footer{text-align:center;font-size:12px;color:#aaa;margin-top:2rem}
+.footer span{color:var(--teal);font-weight:500}
+</style>
+</head>
+<body>
+<div class="page">
+
+<div class="header">
+  <div class="header-left">
+    <div class="logo-box"><span class="logo-text">Terapin</span><span class="logo-ai">AI</span></div>
+    <div class="divider-v"></div>
+    <div><div class="product-name">⚡ Logo Kilat</div><div class="product-sub">Buat logo bisnis dalam hitungan menit</div></div>
+  </div>
+  <div class="header-badge">✦ Powered by AI</div>
+</div>
+
+<div class="card">
+  <div class="section-label"><i class="ti ti-building-store"></i> Identitas brand</div>
+  <div class="row2">
+    <div class="field">
+      <label>Nama brand <span class="req">*</span></label>
+      <input type="text" id="bn" placeholder="cth: Warung Barokah" maxlength="50" oninput="uc(this,'cb');bp()"/>
+      <div class="char-count"><span id="cb">0</span>/50</div>
+    </div>
+    <div class="field">
+      <label>Tagline / slogan</label>
+      <input type="text" id="tg" placeholder="cth: Rasa Ibu, Harga Terjangkau" maxlength="60" oninput="uc(this,'ct');bp()"/>
+      <div class="char-count"><span id="ct">0</span>/60</div>
+    </div>
+  </div>
+</div>
+
+<div class="card">
+  <div class="section-label"><i class="ti ti-category"></i> Kategori bisnis <span class="req">*</span></div>
+  <div class="kat-grid" id="kg">
+    <div class="kat-btn" data-k="fashion" onclick="pk(this)"><i class="ti ti-shirt"></i>Fashion</div>
+    <div class="kat-btn" data-k="kecantikan" onclick="pk(this)"><i class="ti ti-sparkles"></i>Kecantikan</div>
+    <div class="kat-btn" data-k="elektronik" onclick="pk(this)"><i class="ti ti-device-laptop"></i>Elektronik</div>
+    <div class="kat-btn" data-k="handphone" onclick="pk(this)"><i class="ti ti-device-mobile"></i>HP & aksesori</div>
+    <div class="kat-btn" data-k="komputer" onclick="pk(this)"><i class="ti ti-cpu"></i>Komputer & laptop</div>
+    <div class="kat-btn" data-k="rumah" onclick="pk(this)"><i class="ti ti-home"></i>Rumah & dapur</div>
+    <div class="kat-btn" data-k="furnitur" onclick="pk(this)"><i class="ti ti-armchair"></i>Furnitur & dekorasi</div>
+    <div class="kat-btn" data-k="kuliner" onclick="pk(this)"><i class="ti ti-tools-kitchen-2"></i>Makanan & minuman</div>
+    <div class="kat-btn" data-k="kesehatan" onclick="pk(this)"><i class="ti ti-heart-rate-monitor"></i>Kesehatan</div>
+    <div class="kat-btn" data-k="olahraga" onclick="pk(this)"><i class="ti ti-run"></i>Olahraga</div>
+    <div class="kat-btn" data-k="otomotif" onclick="pk(this)"><i class="ti ti-car"></i>Otomotif</div>
+    <div class="kat-btn" data-k="bayi" onclick="pk(this)"><i class="ti ti-baby-carriage"></i>Ibu & bayi</div>
+    <div class="kat-btn" data-k="mainan" onclick="pk(this)"><i class="ti ti-lego"></i>Mainan & hobi</div>
+    <div class="kat-btn" data-k="buku" onclick="pk(this)"><i class="ti ti-book"></i>Buku & alat tulis</div>
+    <div class="kat-btn" data-k="pertanian" onclick="pk(this)"><i class="ti ti-plant"></i>Pertanian</div>
+    <div class="kat-btn" data-k="hewan" onclick="pk(this)"><i class="ti ti-paw"></i>Hewan peliharaan</div>
+    <div class="kat-btn" data-k="industri" onclick="pk(this)"><i class="ti ti-building-factory"></i>Industri & bisnis</div>
+    <div class="kat-btn" data-k="digital" onclick="pk(this)"><i class="ti ti-device-gamepad-2"></i>Produk digital</div>
+    <div class="kat-btn" data-k="servis" onclick="pk(this)"><i class="ti ti-tool"></i>Servis & jasa</div>
+    <div class="kat-btn" data-k="tiket" onclick="pk(this)"><i class="ti ti-ticket"></i>Tiket & voucher</div>
+    <div class="kat-btn" data-k="koleksi" onclick="pk(this)"><i class="ti ti-diamond"></i>Koleksi & seni</div>
+    <div class="kat-btn" data-k="travel" onclick="pk(this)"><i class="ti ti-plane"></i>Travel</div>
+  </div>
+
+  <div id="sub-fashion" class="subkat-wrap"><div class="subkat-title"><i class="ti ti-chevron-right"></i>Sub kategori — Fashion</div><div class="chip-group" id="sf"><div class="chip" onclick="tc(this,'sf')">Atasan wanita</div><div class="chip" onclick="tc(this,'sf')">Bawahan wanita</div><div class="chip" onclick="tc(this,'sf')">Dress & rok</div><div class="chip" onclick="tc(this,'sf')">Atasan pria</div><div class="chip" onclick="tc(this,'sf')">Bawahan pria</div><div class="chip" onclick="tc(this,'sf')">Busana muslim wanita</div><div class="chip" onclick="tc(this,'sf')">Busana muslim pria</div><div class="chip" onclick="tc(this,'sf')">Pakaian anak</div><div class="chip" onclick="tc(this,'sf')">Batik & tenun</div><div class="chip" onclick="tc(this,'sf')">Pakaian olahraga</div><div class="chip" onclick="tc(this,'sf')">Jaket & outerwear</div><div class="chip" onclick="tc(this,'sf')">Sepatu wanita</div><div class="chip" onclick="tc(this,'sf')">Sepatu pria</div><div class="chip" onclick="tc(this,'sf')">Sandal</div><div class="chip" onclick="tc(this,'sf')">Tas wanita</div><div class="chip" onclick="tc(this,'sf')">Tas pria & backpack</div><div class="chip" onclick="tc(this,'sf')">Dompet & aksesori</div><div class="chip" onclick="tc(this,'sf')">Jam tangan</div><div class="chip" onclick="tc(this,'sf')">Perhiasan</div><div class="chip" onclick="tc(this,'sf')">Kacamata</div><div class="chip" onclick="tc(this,'sf')">Topi & scarf</div><div class="chip" onclick="tc(this,'sf')">Thrift & preloved</div><div class="chip" onclick="tcl(this,'li-sf')">✎ Lainnya</div></div><div class="divline"></div><input class="lain-inp" id="li-sf" placeholder="Sub kategori lainnya..." oninput="bp()" style="display:none"/></div>
+  <div id="sub-kecantikan" class="subkat-wrap"><div class="subkat-title"><i class="ti ti-chevron-right"></i>Sub kategori — Kecantikan</div><div class="chip-group" id="sk"><div class="chip" onclick="tc(this,'sk')">Skincare</div><div class="chip" onclick="tc(this,'sk')">Makeup & kosmetik</div><div class="chip" onclick="tc(this,'sk')">Perawatan rambut</div><div class="chip" onclick="tc(this,'sk')">Perawatan tubuh</div><div class="chip" onclick="tc(this,'sk')">Parfum</div><div class="chip" onclick="tc(this,'sk')">Perawatan kuku</div><div class="chip" onclick="tc(this,'sk')">Alat kecantikan</div><div class="chip" onclick="tc(this,'sk')">Produk herbal kecantikan</div><div class="chip" onclick="tc(this,'sk')">Salon & barbershop</div><div class="chip" onclick="tc(this,'sk')">Spa & klinik kecantikan</div><div class="chip" onclick="tc(this,'sk')">Suplemen kecantikan</div><div class="chip" onclick="tcl(this,'li-sk')">✎ Lainnya</div></div><div class="divline"></div><input class="lain-inp" id="li-sk" placeholder="Sub kategori lainnya..." oninput="bp()" style="display:none"/></div>
+  <div id="sub-elektronik" class="subkat-wrap"><div class="subkat-title"><i class="ti ti-chevron-right"></i>Sub kategori — Elektronik</div><div class="chip-group" id="sel"><div class="chip" onclick="tc(this,'sel')">TV & audio visual</div><div class="chip" onclick="tc(this,'sel')">AC & pendingin</div><div class="chip" onclick="tc(this,'sel')">Kulkas & mesin cuci</div><div class="chip" onclick="tc(this,'sel')">Peralatan dapur listrik</div><div class="chip" onclick="tc(this,'sel')">Kamera & aksesori</div><div class="chip" onclick="tc(this,'sel')">Drone</div><div class="chip" onclick="tc(this,'sel')">Headphone & speaker</div><div class="chip" onclick="tc(this,'sel')">Proyektor</div><div class="chip" onclick="tc(this,'sel')">Smart home</div><div class="chip" onclick="tc(this,'sel')">Baterai & charger</div><div class="chip" onclick="tcl(this,'li-sel')">✎ Lainnya</div></div><div class="divline"></div><input class="lain-inp" id="li-sel" placeholder="Sub kategori lainnya..." oninput="bp()" style="display:none"/></div>
+  <div id="sub-handphone" class="subkat-wrap"><div class="subkat-title"><i class="ti ti-chevron-right"></i>Sub kategori — HP & aksesori</div><div class="chip-group" id="shp"><div class="chip" onclick="tc(this,'shp')">Smartphone</div><div class="chip" onclick="tc(this,'shp')">Tablet</div><div class="chip" onclick="tc(this,'shp')">Smartwatch</div><div class="chip" onclick="tc(this,'shp')">Casing & cover</div><div class="chip" onclick="tc(this,'shp')">Charger & powerbank</div><div class="chip" onclick="tc(this,'shp')">Earphone & headset</div><div class="chip" onclick="tc(this,'shp')">Memory & storage</div><div class="chip" onclick="tc(this,'shp')">Pulsa & paket data</div><div class="chip" onclick="tcl(this,'li-shp')">✎ Lainnya</div></div><div class="divline"></div><input class="lain-inp" id="li-shp" placeholder="Sub kategori lainnya..." oninput="bp()" style="display:none"/></div>
+  <div id="sub-komputer" class="subkat-wrap"><div class="subkat-title"><i class="ti ti-chevron-right"></i>Sub kategori — Komputer & laptop</div><div class="chip-group" id="sko"><div class="chip" onclick="tc(this,'sko')">Laptop</div><div class="chip" onclick="tc(this,'sko')">PC & desktop</div><div class="chip" onclick="tc(this,'sko')">Monitor</div><div class="chip" onclick="tc(this,'sko')">Komponen PC</div><div class="chip" onclick="tc(this,'sko')">Keyboard & mouse</div><div class="chip" onclick="tc(this,'sko')">Storage & SSD</div><div class="chip" onclick="tc(this,'sko')">Jaringan & networking</div><div class="chip" onclick="tc(this,'sko')">Printer & scanner</div><div class="chip" onclick="tc(this,'sko')">Software & lisensi</div><div class="chip" onclick="tc(this,'sko')">Gaming gear</div><div class="chip" onclick="tcl(this,'li-sko')">✎ Lainnya</div></div><div class="divline"></div><input class="lain-inp" id="li-sko" placeholder="Sub kategori lainnya..." oninput="bp()" style="display:none"/></div>
+  <div id="sub-rumah" class="subkat-wrap"><div class="subkat-title"><i class="ti ti-chevron-right"></i>Sub kategori — Rumah & dapur</div><div class="chip-group" id="sru"><div class="chip" onclick="tc(this,'sru')">Peralatan masak</div><div class="chip" onclick="tc(this,'sru')">Peralatan makan & minum</div><div class="chip" onclick="tc(this,'sru')">Kamar mandi</div><div class="chip" onclick="tc(this,'sru')">Perlengkapan tidur</div><div class="chip" onclick="tc(this,'sru')">Kebersihan rumah</div><div class="chip" onclick="tc(this,'sru')">Lampu & pencahayaan</div><div class="chip" onclick="tc(this,'sru')">Penyimpanan & organizer</div><div class="chip" onclick="tc(this,'sru')">Taman & outdoor</div><div class="chip" onclick="tc(this,'sru')">Keamanan rumah</div><div class="chip" onclick="tc(this,'sru')">Bahan bangunan</div><div class="chip" onclick="tcl(this,'li-sru')">✎ Lainnya</div></div><div class="divline"></div><input class="lain-inp" id="li-sru" placeholder="Sub kategori lainnya..." oninput="bp()" style="display:none"/></div>
+  <div id="sub-furnitur" class="subkat-wrap"><div class="subkat-title"><i class="ti ti-chevron-right"></i>Sub kategori — Furnitur & dekorasi</div><div class="chip-group" id="sfu"><div class="chip" onclick="tc(this,'sfu')">Sofa & kursi</div><div class="chip" onclick="tc(this,'sfu')">Meja & rak</div><div class="chip" onclick="tc(this,'sfu')">Tempat tidur & kasur</div><div class="chip" onclick="tc(this,'sfu')">Lemari & kabinet</div><div class="chip" onclick="tc(this,'sfu')">Dekorasi dinding</div><div class="chip" onclick="tc(this,'sfu')">Karpet & tikar</div><div class="chip" onclick="tc(this,'sfu')">Gorden & tirai</div><div class="chip" onclick="tc(this,'sfu')">Tanaman & vas</div><div class="chip" onclick="tc(this,'sfu')">Furnitur kantor</div><div class="chip" onclick="tcl(this,'li-sfu')">✎ Lainnya</div></div><div class="divline"></div><input class="lain-inp" id="li-sfu" placeholder="Sub kategori lainnya..." oninput="bp()" style="display:none"/></div>
+  <div id="sub-kuliner" class="subkat-wrap"><div class="subkat-title"><i class="ti ti-chevron-right"></i>Sub kategori — Makanan & minuman</div><div class="chip-group" id="skl"><div class="chip" onclick="tc(this,'skl')">Makanan ringan & snack</div><div class="chip" onclick="tc(this,'skl')">Makanan siap saji</div><div class="chip" onclick="tc(this,'skl')">Frozen food</div><div class="chip" onclick="tc(this,'skl')">Makanan tradisional</div><div class="chip" onclick="tc(this,'skl')">Kopi & teh</div><div class="chip" onclick="tc(this,'skl')">Minuman kemasan</div><div class="chip" onclick="tc(this,'skl')">Minuman kekinian & boba</div><div class="chip" onclick="tc(this,'skl')">Bahan masak & bumbu</div><div class="chip" onclick="tc(this,'skl')">Makanan sehat & organik</div><div class="chip" onclick="tc(this,'skl')">Kue & bakery</div><div class="chip" onclick="tc(this,'skl')">Katering & hampers</div><div class="chip" onclick="tc(this,'skl')">Susu & dairy</div><div class="chip" onclick="tcl(this,'li-skl')">✎ Lainnya</div></div><div class="divline"></div><input class="lain-inp" id="li-skl" placeholder="Sub kategori lainnya..." oninput="bp()" style="display:none"/></div>
+  <div id="sub-kesehatan" class="subkat-wrap"><div class="subkat-title"><i class="ti ti-chevron-right"></i>Sub kategori — Kesehatan</div><div class="chip-group" id="sks"><div class="chip" onclick="tc(this,'sks')">Vitamin & suplemen</div><div class="chip" onclick="tc(this,'sks')">Obat & apotek</div><div class="chip" onclick="tc(this,'sks')">Alat kesehatan</div><div class="chip" onclick="tc(this,'sks')">Masker & APD</div><div class="chip" onclick="tc(this,'sks')">Produk herbal</div><div class="chip" onclick="tc(this,'sks')">Klinik & rumah sakit</div><div class="chip" onclick="tc(this,'sks')">Kesehatan pria</div><div class="chip" onclick="tc(this,'sks')">Kesehatan wanita</div><div class="chip" onclick="tc(this,'sks')">Mental health</div><div class="chip" onclick="tc(this,'sks')">Perawatan gigi</div><div class="chip" onclick="tcl(this,'li-sks')">✎ Lainnya</div></div><div class="divline"></div><input class="lain-inp" id="li-sks" placeholder="Sub kategori lainnya..." oninput="bp()" style="display:none"/></div>
+  <div id="sub-olahraga" class="subkat-wrap"><div class="subkat-title"><i class="ti ti-chevron-right"></i>Sub kategori — Olahraga</div><div class="chip-group" id="sol"><div class="chip" onclick="tc(this,'sol')">Fitness & gym</div><div class="chip" onclick="tc(this,'sol')">Sepeda</div><div class="chip" onclick="tc(this,'sol')">Badminton</div><div class="chip" onclick="tc(this,'sol')">Sepak bola & futsal</div><div class="chip" onclick="tc(this,'sol')">Renang</div><div class="chip" onclick="tc(this,'sol')">Lari & jogging</div><div class="chip" onclick="tc(this,'sol')">Yoga & pilates</div><div class="chip" onclick="tc(this,'sol')">Outdoor & hiking</div><div class="chip" onclick="tc(this,'sol')">Bela diri</div><div class="chip" onclick="tc(this,'sol')">Basketball & voli</div><div class="chip" onclick="tc(this,'sol')">Tenis & golf</div><div class="chip" onclick="tcl(this,'li-sol')">✎ Lainnya</div></div><div class="divline"></div><input class="lain-inp" id="li-sol" placeholder="Sub kategori lainnya..." oninput="bp()" style="display:none"/></div>
+  <div id="sub-otomotif" class="subkat-wrap"><div class="subkat-title"><i class="ti ti-chevron-right"></i>Sub kategori — Otomotif</div><div class="chip-group" id="sot"><div class="chip" onclick="tc(this,'sot')">Aksesori mobil</div><div class="chip" onclick="tc(this,'sot')">Aksesori motor</div><div class="chip" onclick="tc(this,'sot')">Sparepart mobil</div><div class="chip" onclick="tc(this,'sot')">Sparepart motor</div><div class="chip" onclick="tc(this,'sot')">Oli & pelumas</div><div class="chip" onclick="tc(this,'sot')">Ban & velg</div><div class="chip" onclick="tc(this,'sot')">Alat bengkel</div><div class="chip" onclick="tc(this,'sot')">Helm & safety</div><div class="chip" onclick="tc(this,'sot')">GPS & elektronik kendaraan</div><div class="chip" onclick="tc(this,'sot')">Cuci & perawatan kendaraan</div><div class="chip" onclick="tcl(this,'li-sot')">✎ Lainnya</div></div><div class="divline"></div><input class="lain-inp" id="li-sot" placeholder="Sub kategori lainnya..." oninput="bp()" style="display:none"/></div>
+  <div id="sub-bayi" class="subkat-wrap"><div class="subkat-title"><i class="ti ti-chevron-right"></i>Sub kategori — Ibu & bayi</div><div class="chip-group" id="sba"><div class="chip" onclick="tc(this,'sba')">Pakaian bayi & anak</div><div class="chip" onclick="tc(this,'sba')">Popok & perawatan</div><div class="chip" onclick="tc(this,'sba')">MPASI & makanan bayi</div><div class="chip" onclick="tc(this,'sba')">Perlengkapan menyusui</div><div class="chip" onclick="tc(this,'sba')">Stroller & gendongan</div><div class="chip" onclick="tc(this,'sba')">Mainan edukatif bayi</div><div class="chip" onclick="tc(this,'sba')">Produk kehamilan</div><div class="chip" onclick="tc(this,'sba')">Perlengkapan sekolah anak</div><div class="chip" onclick="tcl(this,'li-sba')">✎ Lainnya</div></div><div class="divline"></div><input class="lain-inp" id="li-sba" placeholder="Sub kategori lainnya..." oninput="bp()" style="display:none"/></div>
+  <div id="sub-mainan" class="subkat-wrap"><div class="subkat-title"><i class="ti ti-chevron-right"></i>Sub kategori — Mainan & hobi</div><div class="chip-group" id="sma"><div class="chip" onclick="tc(this,'sma')">Action figure & koleksi</div><div class="chip" onclick="tc(this,'sma')">Boneka</div><div class="chip" onclick="tc(this,'sma')">Lego & puzzle</div><div class="chip" onclick="tc(this,'sma')">Remote control & drone</div><div class="chip" onclick="tc(this,'sma')">Board game & kartu</div><div class="chip" onclick="tc(this,'sma')">Alat musik</div><div class="chip" onclick="tc(this,'sma')">Melukis & kerajinan</div><div class="chip" onclick="tc(this,'sma')">Cosplay & kostum</div><div class="chip" onclick="tc(this,'sma')">Koleksi anime & manga</div><div class="chip" onclick="tcl(this,'li-sma')">✎ Lainnya</div></div><div class="divline"></div><input class="lain-inp" id="li-sma" placeholder="Sub kategori lainnya..." oninput="bp()" style="display:none"/></div>
+  <div id="sub-buku" class="subkat-wrap"><div class="subkat-title"><i class="ti ti-chevron-right"></i>Sub kategori — Buku & alat tulis</div><div class="chip-group" id="sbu"><div class="chip" onclick="tc(this,'sbu')">Buku pelajaran</div><div class="chip" onclick="tc(this,'sbu')">Buku bisnis & self-help</div><div class="chip" onclick="tc(this,'sbu')">Novel & fiksi</div><div class="chip" onclick="tc(this,'sbu')">Komik & manga</div><div class="chip" onclick="tc(this,'sbu')">Buku anak</div><div class="chip" onclick="tc(this,'sbu')">Alat tulis & stationery</div><div class="chip" onclick="tc(this,'sbu')">Perlengkapan seni</div><div class="chip" onclick="tc(this,'sbu')">Buku agama</div><div class="chip" onclick="tcl(this,'li-sbu')">✎ Lainnya</div></div><div class="divline"></div><input class="lain-inp" id="li-sbu" placeholder="Sub kategori lainnya..." oninput="bp()" style="display:none"/></div>
+  <div id="sub-pertanian" class="subkat-wrap"><div class="subkat-title"><i class="ti ti-chevron-right"></i>Sub kategori — Pertanian</div><div class="chip-group" id="spe"><div class="chip" onclick="tc(this,'spe')">Benih & bibit</div><div class="chip" onclick="tc(this,'spe')">Pupuk & pestisida</div><div class="chip" onclick="tc(this,'spe')">Alat pertanian</div><div class="chip" onclick="tc(this,'spe')">Peternakan</div><div class="chip" onclick="tc(this,'spe')">Perikanan & budidaya</div><div class="chip" onclick="tc(this,'spe')">Hasil olahan tani</div><div class="chip" onclick="tc(this,'spe')">Hidroponik</div><div class="chip" onclick="tcl(this,'li-spe')">✎ Lainnya</div></div><div class="divline"></div><input class="lain-inp" id="li-spe" placeholder="Sub kategori lainnya..." oninput="bp()" style="display:none"/></div>
+  <div id="sub-hewan" class="subkat-wrap"><div class="subkat-title"><i class="ti ti-chevron-right"></i>Sub kategori — Hewan peliharaan</div><div class="chip-group" id="she"><div class="chip" onclick="tc(this,'she')">Makanan kucing</div><div class="chip" onclick="tc(this,'she')">Makanan anjing</div><div class="chip" onclick="tc(this,'she')">Makanan ikan & reptil</div><div class="chip" onclick="tc(this,'she')">Kandang & aksesori</div><div class="chip" onclick="tc(this,'she')">Grooming hewan</div><div class="chip" onclick="tc(this,'she')">Obat & vitamin hewan</div><div class="chip" onclick="tc(this,'she')">Aquarium & ikan hias</div><div class="chip" onclick="tc(this,'she')">Klinik hewan</div><div class="chip" onclick="tcl(this,'li-she')">✎ Lainnya</div></div><div class="divline"></div><input class="lain-inp" id="li-she" placeholder="Sub kategori lainnya..." oninput="bp()" style="display:none"/></div>
+  <div id="sub-industri" class="subkat-wrap"><div class="subkat-title"><i class="ti ti-chevron-right"></i>Sub kategori — Industri & bisnis</div><div class="chip-group" id="sin"><div class="chip" onclick="tc(this,'sin')">Mesin industri</div><div class="chip" onclick="tc(this,'sin')">Alat & perkakas</div><div class="chip" onclick="tc(this,'sin')">Keselamatan kerja (K3)</div><div class="chip" onclick="tc(this,'sin')">Perlengkapan kantor</div><div class="chip" onclick="tc(this,'sin')">Percetakan & packaging</div><div class="chip" onclick="tc(this,'sin')">Kebersihan & sanitasi</div><div class="chip" onclick="tc(this,'sin')">Listrik & instalasi</div><div class="chip" onclick="tc(this,'sin')">Pipa & plumbing</div><div class="chip" onclick="tcl(this,'li-sin')">✎ Lainnya</div></div><div class="divline"></div><input class="lain-inp" id="li-sin" placeholder="Sub kategori lainnya..." oninput="bp()" style="display:none"/></div>
+  <div id="sub-digital" class="subkat-wrap"><div class="subkat-title"><i class="ti ti-chevron-right"></i>Sub kategori — Produk digital</div><div class="chip-group" id="sdi"><div class="chip" onclick="tc(this,'sdi')">Game & top up</div><div class="chip" onclick="tc(this,'sdi')">Aplikasi & software</div><div class="chip" onclick="tc(this,'sdi')">Desain & template</div><div class="chip" onclick="tc(this,'sdi')">E-book & kursus online</div><div class="chip" onclick="tc(this,'sdi')">Musik & audio</div><div class="chip" onclick="tc(this,'sdi')">Domain & hosting</div><div class="chip" onclick="tc(this,'sdi')">Jasa freelance digital</div><div class="chip" onclick="tc(this,'sdi')">Streaming & subscription</div><div class="chip" onclick="tcl(this,'li-sdi')">✎ Lainnya</div></div><div class="divline"></div><input class="lain-inp" id="li-sdi" placeholder="Sub kategori lainnya..." oninput="bp()" style="display:none"/></div>
+  <div id="sub-servis" class="subkat-wrap"><div class="subkat-title"><i class="ti ti-chevron-right"></i>Sub kategori — Servis & jasa</div><div class="chip-group" id="sse"><div class="chip" onclick="tc(this,'sse')">Reparasi elektronik</div><div class="chip" onclick="tc(this,'sse')">Servis kendaraan</div><div class="chip" onclick="tc(this,'sse')">Jasa kebersihan</div><div class="chip" onclick="tc(this,'sse')">Instalasi & renovasi</div><div class="chip" onclick="tc(this,'sse')">Fotografi & videografi</div><div class="chip" onclick="tc(this,'sse')">Desain & kreatif</div><div class="chip" onclick="tc(this,'sse')">Konsultan & pelatihan</div><div class="chip" onclick="tc(this,'sse')">Jasa kurir</div><div class="chip" onclick="tc(this,'sse')">Jasa cetak</div><div class="chip" onclick="tc(this,'sse')">Event organizer</div><div class="chip" onclick="tcl(this,'li-sse')">✎ Lainnya</div></div><div class="divline"></div><input class="lain-inp" id="li-sse" placeholder="Sub kategori lainnya..." oninput="bp()" style="display:none"/></div>
+  <div id="sub-tiket" class="subkat-wrap"><div class="subkat-title"><i class="ti ti-chevron-right"></i>Sub kategori — Tiket & voucher</div><div class="chip-group" id="sti"><div class="chip" onclick="tc(this,'sti')">Tiket konser & hiburan</div><div class="chip" onclick="tc(this,'sti')">Tiket wisata & atraksi</div><div class="chip" onclick="tc(this,'sti')">Voucher makan</div><div class="chip" onclick="tc(this,'sti')">Voucher belanja</div><div class="chip" onclick="tc(this,'sti')">Voucher hotel & travel</div><div class="chip" onclick="tc(this,'sti')">Voucher kecantikan</div><div class="chip" onclick="tc(this,'sti')">Gift card & e-money</div><div class="chip" onclick="tcl(this,'li-sti')">✎ Lainnya</div></div><div class="divline"></div><input class="lain-inp" id="li-sti" placeholder="Sub kategori lainnya..." oninput="bp()" style="display:none"/></div>
+  <div id="sub-koleksi" class="subkat-wrap"><div class="subkat-title"><i class="ti ti-chevron-right"></i>Sub kategori — Koleksi & seni</div><div class="chip-group" id="sko2"><div class="chip" onclick="tc(this,'sko2')">Perhiasan & emas</div><div class="chip" onclick="tc(this,'sko2')">Lukisan & karya seni</div><div class="chip" onclick="tc(this,'sko2')">Koin & perangko</div><div class="chip" onclick="tc(this,'sko2')">Jam tangan mewah</div><div class="chip" onclick="tc(this,'sko2')">Barang antik & vintage</div><div class="chip" onclick="tc(this,'sko2')">Trading card</div><div class="chip" onclick="tc(this,'sko2')">Patung & miniatur</div><div class="chip" onclick="tcl(this,'li-sko2')">✎ Lainnya</div></div><div class="divline"></div><input class="lain-inp" id="li-sko2" placeholder="Sub kategori lainnya..." oninput="bp()" style="display:none"/></div>
+  <div id="sub-travel" class="subkat-wrap"><div class="subkat-title"><i class="ti ti-chevron-right"></i>Sub kategori — Travel</div><div class="chip-group" id="str"><div class="chip" onclick="tc(this,'str')">Agen perjalanan</div><div class="chip" onclick="tc(this,'str')">Hotel & penginapan</div><div class="chip" onclick="tc(this,'str')">Paket wisata domestik</div><div class="chip" onclick="tc(this,'str')">Paket wisata luar negeri</div><div class="chip" onclick="tc(this,'str')">Koper & perlengkapan travel</div><div class="chip" onclick="tc(this,'str')">Visa & dokumen</div><div class="chip" onclick="tc(this,'str')">Tiket pesawat</div><div class="chip" onclick="tcl(this,'li-str')">✎ Lainnya</div></div><div class="divline"></div><input class="lain-inp" id="li-str" placeholder="Sub kategori lainnya..." oninput="bp()" style="display:none"/></div>
+
+  <div class="divline" style="margin-top:14px"></div>
+  <div class="field" style="margin-top:12px">
+    <label>Target market <span class="req">*</span></label>
+    <div class="chip-group" id="target">
+      <div class="chip" onclick="tc(this,'target')">Anak-anak (0–12)</div><div class="chip" onclick="tc(this,'target')">Remaja (13–17)</div><div class="chip" onclick="tc(this,'target')">Dewasa muda (18–30)</div><div class="chip" onclick="tc(this,'target')">Dewasa (31–50)</div><div class="chip" onclick="tc(this,'target')">Senior (50+)</div><div class="chip" onclick="tc(this,'target')">Semua usia</div><div class="chip" onclick="tc(this,'target')">Pria</div><div class="chip" onclick="tc(this,'target')">Wanita</div><div class="chip" onclick="tc(this,'target')">UMKM & pelaku bisnis</div><div class="chip" onclick="tc(this,'target')">Korporat & perusahaan</div>
+    </div>
+    <div class="hint">Boleh pilih lebih dari satu</div>
+    <input class="lain-inp" id="target-lain" placeholder="Target market lainnya (opsional)..." oninput="bp()" style="display:block;margin-top:8px"/>
+  </div>
+</div>
+
+<div class="card">
+  <div class="section-label"><i class="ti ti-brush"></i> Gaya & estetika</div>
+  <div class="field">
+    <label>Gaya logo</label>
+    <div class="chip-group" id="gaya">
+      <div class="chip" onclick="tc(this,'gaya')">Minimalis</div><div class="chip" onclick="tc(this,'gaya')">Modern</div><div class="chip" onclick="tc(this,'gaya')">Vintage / retro</div><div class="chip" onclick="tc(this,'gaya')">Playful / ceria</div><div class="chip" onclick="tc(this,'gaya')">Mewah / premium</div><div class="chip" onclick="tc(this,'gaya')">Tradisional / etnik</div><div class="chip" onclick="tc(this,'gaya')">Tegas / maskulin</div><div class="chip" onclick="tc(this,'gaya')">Feminin / elegan</div><div class="chip" onclick="tc(this,'gaya')">Futuristik / tech</div><div class="chip" onclick="tc(this,'gaya')">Kartun / ilustrasi</div>
+    </div>
+    <input class="lain-inp" id="gaya-lain" placeholder="Gaya lainnya (opsional)..." oninput="bp()" style="display:block;margin-top:8px"/>
+  </div>
+  <div class="field">
+    <label>Format logo</label>
+    <div class="chip-group" id="format">
+      <div class="chip" onclick="tc(this,'format',1)">Ikon + teks (kombinasi)</div><div class="chip" onclick="tc(this,'format',1)">Teks saja (wordmark)</div><div class="chip" onclick="tc(this,'format',1)">Ikon / simbol saja</div><div class="chip" onclick="tc(this,'format',1)">Monogram / inisial</div><div class="chip" onclick="tc(this,'format',1)">Emblem / badge</div>
+    </div>
+    <input class="lain-inp" id="format-lain" placeholder="Format lainnya (opsional)..." oninput="bp()" style="display:block;margin-top:8px"/>
+  </div>
+  <div class="field">
+    <label>Warna yang diinginkan</label>
+    <div class="color-row" id="warna">
+      <div class="ci"><div class="swatch" style="background:#1a1a1a" data-n="Hitam" onclick="tcolor(this)"></div><div class="clbl">Hitam</div></div>
+      <div class="ci"><div class="swatch" style="background:#fff;border:1px solid #ccc" data-n="Putih" onclick="tcolor(this)"></div><div class="clbl">Putih</div></div>
+      <div class="ci"><div class="swatch" style="background:#378ADD" data-n="Biru" onclick="tcolor(this)"></div><div class="clbl">Biru</div></div>
+      <div class="ci"><div class="swatch" style="background:#7F77DD" data-n="Ungu" onclick="tcolor(this)"></div><div class="clbl">Ungu</div></div>
+      <div class="ci"><div class="swatch" style="background:#0B8A8A" data-n="Teal" onclick="tcolor(this)"></div><div class="clbl">Teal</div></div>
+      <div class="ci"><div class="swatch" style="background:#1D9E75" data-n="Hijau" onclick="tcolor(this)"></div><div class="clbl">Hijau</div></div>
+      <div class="ci"><div class="swatch" style="background:#E24B4A" data-n="Merah" onclick="tcolor(this)"></div><div class="clbl">Merah</div></div>
+      <div class="ci"><div class="swatch" style="background:#EF9F27" data-n="Oranye" onclick="tcolor(this)"></div><div class="clbl">Oranye</div></div>
+      <div class="ci"><div class="swatch" style="background:#BA7517" data-n="Coklat" onclick="tcolor(this)"></div><div class="clbl">Coklat</div></div>
+      <div class="ci"><div class="swatch" style="background:#D4537E" data-n="Pink" onclick="tcolor(this)"></div><div class="clbl">Pink</div></div>
+      <div class="ci"><div class="swatch" style="background:#888780" data-n="Abu-abu" onclick="tcolor(this)"></div><div class="clbl">Abu</div></div>
+      <div class="ci"><div class="swatch" style="background:#FAC775" data-n="Kuning" onclick="tcolor(this)"></div><div class="clbl">Kuning</div></div>
+    </div>
+    <div class="hint" style="margin-top:8px">Boleh pilih lebih dari satu warna</div>
+  </div>
+  <div class="field">
+    <label>Kesan yang ingin disampaikan</label>
+    <div class="chip-group" id="kesan">
+      <div class="chip" onclick="tc(this,'kesan')">Terpercaya</div><div class="chip" onclick="tc(this,'kesan')">Ramah & hangat</div><div class="chip" onclick="tc(this,'kesan')">Profesional</div><div class="chip" onclick="tc(this,'kesan')">Eksklusif & mewah</div><div class="chip" onclick="tc(this,'kesan')">Energik & dinamis</div><div class="chip" onclick="tc(this,'kesan')">Segar & natural</div><div class="chip" onclick="tc(this,'kesan')">Berani & kuat</div><div class="chip" onclick="tc(this,'kesan')">Kreatif & unik</div><div class="chip" onclick="tc(this,'kesan')">Murah & terjangkau</div><div class="chip" onclick="tc(this,'kesan')">Modern & inovatif</div>
+    </div>
+    <input class="lain-inp" id="kesan-lain" placeholder="Kesan lainnya (opsional)..." oninput="bp()" style="display:block;margin-top:8px"/>
+  </div>
+</div>
+
+<div class="card">
+  <div class="section-label"><i class="ti ti-list-details"></i> Detail tambahan</div>
+  <div class="field">
+    <label>Platform penggunaan logo</label>
+    <div class="chip-group" id="platform">
+      <div class="chip" onclick="tc(this,'platform')">Toko Shopee / Tokopedia</div><div class="chip" onclick="tc(this,'platform')">TikTok Shop</div><div class="chip" onclick="tc(this,'platform')">Media sosial (IG, FB)</div><div class="chip" onclick="tc(this,'platform')">Kemasan produk</div><div class="chip" onclick="tc(this,'platform')">Spanduk / banner</div><div class="chip" onclick="tc(this,'platform')">Website</div><div class="chip" onclick="tc(this,'platform')">Seragam / baju</div><div class="chip" onclick="tc(this,'platform')">Semua platform</div>
+    </div>
+  </div>
+  <div class="row2">
+    <div class="field"><label>Referensi brand (opsional)</label><input type="text" id="ref" placeholder="cth: Nike, Grab, BCA" oninput="bp()"/><div class="hint">Brand yang gayanya Anda suka</div></div>
+    <div class="field"><label>Hindari (opsional)</label><input type="text" id="hdr" placeholder="cth: warna kuning, gaya kartun" oninput="bp()"/><div class="hint">Warna/gaya yang tidak diinginkan</div></div>
+  </div>
+  <div class="field"><label>Catatan tambahan (opsional)</label><textarea id="cat" placeholder="Informasi lain yang ingin Anda sampaikan ke AI..."></textarea></div>
+</div>
+
+<div class="preview-card">
+  <div class="preview-label"><i class="ti ti-eye" style="font-size:14px"></i> Preview prompt yang akan dikirim ke AI</div>
+  <div class="preview-box" id="pp">Isi form di atas untuk melihat preview prompt...</div>
+</div>
+
+<button class="btn-primary" onclick="openGPT()">
+  <i class="ti ti-sparkles" style="font-size:16px"></i> ⚡ Generate logo sekarang — buka di ChatGPT <i class="ti ti-external-link" style="font-size:15px"></i>
+</button>
+<button class="btn-reset" onclick="rf()">↺ Reset form</button>
+<div class="footer"><p>© 2025 <span>Terapin AI</span> — Logo Kilat · terapinai.id</p></div>
+</div>
+
+<script>
+// ============================================================
+// ⬇️  GANTI URL INI DENGAN URL CUSTOM GPT ANDA  ⬇️
+// ============================================================
+const GPT_URL = "https://chatgpt.com/g/g-XXXXXXX-nama-gpt-anda";
+// ============================================================
+
+let selKat = null;
+const smap = {fashion:'sub-fashion',kecantikan:'sub-kecantikan',elektronik:'sub-elektronik',handphone:'sub-handphone',komputer:'sub-komputer',rumah:'sub-rumah',furnitur:'sub-furnitur',kuliner:'sub-kuliner',kesehatan:'sub-kesehatan',olahraga:'sub-olahraga',otomotif:'sub-otomotif',bayi:'sub-bayi',mainan:'sub-mainan',buku:'sub-buku',pertanian:'sub-pertanian',hewan:'sub-hewan',industri:'sub-industri',digital:'sub-digital',servis:'sub-servis',tiket:'sub-tiket',koleksi:'sub-koleksi',travel:'sub-travel'};
+const scmap = {fashion:'sf',kecantikan:'sk',elektronik:'sel',handphone:'shp',komputer:'sko',rumah:'sru',furnitur:'sfu',kuliner:'skl',kesehatan:'sks',olahraga:'sol',otomotif:'sot',bayi:'sba',mainan:'sma',buku:'sbu',pertanian:'spe',hewan:'she',industri:'sin',digital:'sdi',servis:'sse',tiket:'sti',koleksi:'sko2',travel:'str'};
+
+function pk(el){
+  const k=el.dataset.k, same=el.classList.contains('sel');
+  document.querySelectorAll('#kg .kat-btn').forEach(b=>b.classList.remove('sel'));
+  Object.values(smap).forEach(id=>{const e=document.getElementById(id);if(e)e.classList.remove('vis');});
+  if(!same){el.classList.add('sel');selKat=k;const s=smap[k];if(s)document.getElementById(s).classList.add('vis');}
+  else selKat=null;
+  bp();
+}
+
+function tc(el,gid,single){
+  if(single)document.querySelectorAll('#'+gid+' .chip').forEach(c=>c.classList.remove('sel'));
+  el.classList.toggle('sel');bp();
+}
+
+function tcl(el,inputId){
+  el.classList.toggle('sel');
+  const inp=document.getElementById(inputId);
+  if(inp)inp.style.display=el.classList.contains('sel')?'block':'none';
+  bp();
+}
+
+function tcolor(el){el.classList.toggle('sel');bp();}
+function uc(el,id){document.getElementById(id).textContent=el.value.length;}
+function gc(gid){return Array.from(document.querySelectorAll('#'+gid+' .chip.sel')).map(c=>c.textContent.trim()).filter(t=>t!=='✎ Lainnya');}
+function gcol(){return Array.from(document.querySelectorAll('#warna .swatch.sel')).map(c=>c.dataset.n);}
+function gv(id){const e=document.getElementById(id);return e?e.value.trim():'';}
+
+function getSub(){
+  if(!selKat)return[];
+  const cid=scmap[selKat];if(!cid)return[];
+  const chips=gc(cid);
+  const lain=gv('li-'+cid);
+  if(lain)chips.push(lain);
+  return chips;
+}
+
+function bp(){
+  const brand=gv('bn'),tagline=gv('tg'),ref=gv('ref'),hdr=gv('hdr'),cat=gv('cat');
+  const katEl=document.querySelector('#kg .kat-btn.sel');
+  const katLabel=katEl?katEl.textContent.trim():'';
+  const sub=getSub();
+  const target=[...gc('target'),gv('target-lain')].filter(Boolean);
+  const gaya=[...gc('gaya'),gv('gaya-lain')].filter(Boolean);
+  const format=[...gc('format'),gv('format-lain')].filter(Boolean);
+  const warna=gcol();
+  const kesan=[...gc('kesan'),gv('kesan-lain')].filter(Boolean);
+  const platform=gc('platform');
+
+  if(!brand&&!katLabel){document.getElementById('pp').textContent='Isi form di atas untuk melihat preview prompt...';return;}
+
+  let parts=[];
+  if(brand)parts.push('Nama brand: '+brand);
+  if(tagline)parts.push('Tagline: "'+tagline+'"');
+  if(katLabel){let k='Kategori bisnis: '+katLabel;if(sub.length)k+=' › '+sub.join(', ');parts.push(k);}
+  if(target.length)parts.push('Target market: '+target.join(', '));
+  if(gaya.length)parts.push('Gaya logo: '+gaya.join(', '));
+  if(format.length)parts.push('Format logo: '+format[0]);
+  if(warna.length)parts.push('Warna preferensi: '+warna.join(', '));
+  if(kesan.length)parts.push('Kesan yang ingin disampaikan: '+kesan.join(', '));
+  if(platform.length)parts.push('Platform penggunaan: '+platform.join(', '));
+  if(ref)parts.push('Referensi gaya brand: '+ref);
+  if(hdr)parts.push('Hindari: '+hdr);
+  if(cat)parts.push('Catatan: '+cat);
+
+  document.getElementById('pp').textContent='Tolong buatkan konsep logo untuk saya.\n\n'+parts.join('\n');
+}
+
+function openGPT(){
+  if(!gv('bn')){alert('Mohon isi nama brand terlebih dahulu.');return;}
+  if(!document.querySelector('#kg .kat-btn.sel')){alert('Mohon pilih kategori bisnis.');return;}
+  const prompt=document.getElementById('pp').textContent;
+  window.open(GPT_URL+'?message='+encodeURIComponent(prompt),'_blank');
+}
+
+function rf(){
+  ['bn','tg','ref','hdr','cat','target-lain','gaya-lain','format-lain','kesan-lain'].forEach(id=>{const e=document.getElementById(id);if(e)e.value='';});
+  ['cb','ct'].forEach(id=>document.getElementById(id).textContent='0');
+  document.querySelectorAll('.chip,.kat-btn').forEach(c=>c.classList.remove('sel'));
+  document.querySelectorAll('.swatch').forEach(c=>c.classList.remove('sel'));
+  document.querySelectorAll('.lain-inp').forEach(e=>{e.value='';if(e.id.startsWith('li-'))e.style.display='none';});
+  Object.values(smap).forEach(id=>{const e=document.getElementById(id);if(e)e.classList.remove('vis');});
+  selKat=null;
+  document.getElementById('pp').textContent='Isi form di atas untuk melihat preview prompt...';
+}
+</script>
+</body>
+</html>
